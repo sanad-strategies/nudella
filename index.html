@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Nudella · تصور لصفحة الطلب</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;700&family=Tajawal:wght@400;500;700&family=Aref+Ruqaa:wght@700&display=swap">
+<style>
+/* Concept: a jeweller's display tray. Soft mauve card stock, silver and gold plating as the two accents, and a live engraving preview as the centrepiece. */
+:root{
+  --bg:#fbf6f7; --card:#ffffff; --ink:#3a2433; --soft:#86707d; --mauve:#a35d86; --mauve-deep:#7f3f66; --blush:#f3e4ec; --line:#ead7e1;
+  --silver:#b8bcc4; --gold:#c9a24a;
+  --display:"El Messiri", "Tajawal", Tahoma, sans-serif;
+  --body:"Tajawal", "Segoe UI", Tahoma, sans-serif;
+  --engrave:"Aref Ruqaa", "El Messiri", serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7}
+img{max-width:100%;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:18px}
+.concept{background:var(--ink);color:#f6e8f0;font-size:.85rem;text-align:center;padding:8px 16px}
+.concept b{color:#fff}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+.brand img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--blush)}
+.brand span{font-family:var(--display);font-size:1.5rem;font-weight:700;line-height:1;letter-spacing:.02em}
+.brand small{display:block;font-size:.8rem;color:var(--soft);margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:700;text-decoration:none;border:0;border-radius:999px;padding:11px 22px;cursor:pointer;background:var(--mauve);color:#fff;transition:background .15s}
+.btn:hover{background:var(--mauve-deep)}
+.btn.ghost{background:transparent;color:var(--mauve-deep);border:1.5px solid var(--mauve)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.pick input:focus-visible+span{outline:3px solid var(--mauve);outline-offset:2px}
+
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:36px;align-items:center;padding-block:16px 44px}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.25;margin:0 0 12px;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--mauve-deep)}
+.hero p{color:var(--soft);font-size:1.1rem;max-width:42ch;margin:0 0 20px}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
+.facts li{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:.92rem}
+.hero-img{position:relative}
+.hero-img img{border-radius:120px 28px 28px 28px;aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:0 20px 50px -24px rgba(80,30,60,.45)}
+.hero-img .tag{position:absolute;right:-12px;bottom:26px;background:var(--card);border-radius:16px;padding:10px 16px;font-size:.9rem;box-shadow:0 10px 30px -12px rgba(80,30,60,.35)}
+.hero-img .tag b{display:block;font-family:var(--display);font-size:1.1rem}
+
+section{padding-block:40px}
+.sec-h{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,4vw,2.3rem);margin:0;line-height:1.3}
+.sec-h p{margin:0;color:var(--soft)}
+
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.cat img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--blush)}
+.cat div{padding:12px 16px 16px}
+.cat h3{margin:0;font-family:var(--display);font-size:1.15rem}
+.cat p{margin:2px 0 0;color:var(--soft);font-size:.92rem}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.step::before{counter-increment:s;content:counter(s, arabic-indic);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--blush);color:var(--mauve-deep);font-weight:700;margin-bottom:8px}
+.step h3{margin:0 0 2px;font-size:1.05rem}
+.step p{margin:0;color:var(--soft);font-size:.95rem}
+
+.order{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:clamp(20px,4vw,34px);display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.order form{display:flex;flex-direction:column;gap:16px;min-width:0}
+fieldset{border:0;margin:0;padding:0;min-width:0}
+legend,label{font-weight:700;font-size:.95rem;margin-bottom:6px;display:block}
+.picks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pick{position:relative;cursor:pointer}
+.pick input{position:absolute;opacity:0}
+.pick span{display:flex;flex-direction:column;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;transition:border-color .15s, background .15s;font-weight:500}
+.pick input:checked+span{border-color:var(--mauve);background:#fbf1f7}
+.plating{display:flex;gap:10px}
+.plating .pick span{flex-direction:row;align-items:center;gap:8px}
+.dot{width:16px;height:16px;border-radius:50%;display:inline-block}
+.dot.s{background:linear-gradient(135deg,#e6e8ec,var(--silver))}
+.dot.g{background:linear-gradient(135deg,#f3dc9b,var(--gold))}
+input[type=text],input[type=tel],input[type=date],select,textarea{width:100%;font:inherit;color:inherit;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:9px 12px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:var(--mauve-deep);font-size:.9rem;min-height:1.2em}
+.side{display:flex;flex-direction:column;gap:16px;min-width:0}
+.engrave{border-radius:22px;padding:22px;text-align:center;background:radial-gradient(circle at 50% 35%, #fff 0%, var(--blush) 75%)}
+.engrave small{color:var(--soft);display:block;margin-bottom:6px}
+.plate{display:inline-block;font-family:var(--engrave);font-size:clamp(2rem,7vw,3rem);line-height:1.3;padding:8px 26px;border-radius:999px;color:#7d8088;background:linear-gradient(135deg,#f4f5f7,#c9ccd3 55%,#eef0f3);box-shadow:inset 0 1px 0 #fff, 0 8px 20px -10px rgba(0,0,0,.35);max-width:100%;overflow-wrap:anywhere;transition:color .2s, background .2s}
+.plate.gold{color:#8a6a22;background:linear-gradient(135deg,#fbefc6,#d8b45c 55%,#f6e3a6)}
+.preview{background:var(--bg);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.preview h3{margin:0;font-family:var(--display);font-size:1.25rem}
+.bubble{background:#dcf8c6;color:#1f2d1a;border-radius:14px 14px 14px 4px;padding:12px 14px;white-space:pre-wrap;font-size:.95rem;align-self:flex-start;max-width:100%}
+.note{font-size:.88rem;color:var(--soft);margin:0}
+.done{display:none;background:#eef7f2;color:#2f6b55;border-radius:12px;padding:10px 14px;font-size:.92rem}
+.done.show{display:block}
+footer{padding-block:32px 44px;color:var(--soft);font-size:.92rem;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:20px}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr}
+  .hero-img{order:-1}
+  .hero-img .tag{right:12px}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .order{grid-template-columns:1fr}
+  .side{order:-1}
+}
+@media (max-width:420px){.picks{grid-template-columns:repeat(2,1fr)}.row2{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.plate{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="concept"><b>تصور تجريبي</b> معمول من Sanad Strategies لـ Nudella. مش متجر حقيقي، ومفيش طلبات بتتبعت من هنا.</div>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Nudella، الصفحة الرئيسية">
+      <img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.82787-19/886894629_18051806036819785_3941811441808139423_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=106&_nc_map=urlgen_bucketless&ig_cache_key=GCXw3DRJ-2CeBSJAAJ9kiyifILQ2bmNDAQAB1501500j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=C3KhQNObaVMQ7kNvwFivM7X&_nc_oc=AdrBSyp1CcHsA9PXPmUsTcxNsJtiiOV2NUYV7IQ3WAYuokm72lvGnkPg0RsOdBTvex4&_nc_zt=24&_nc_ht=instagram.faly1-2.fna&_nc_gid=kWtVpXwS2zO7218fPcjrGw&_nc_ss=7b6a8&_nc_ct=RQosPBUCFQIAAAA&oh=00_AQSXftEU31GWCve-2wv90P6-yvWrtvxGqhVNAq8fdltOLw&oe=6AFD46DC" alt="">
+      <div><span>Nudella</span><small>إكسسوارات هاند ميد · المنصورة</small></div>
+    </a>
+    <a class="btn" href="#order">اطلب قطعتك</a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="h1">
+      <div>
+        <h1 id="h1">اسمك، <em>معمول بإيدينا</em> بكل حب</h1>
+        <p>بروشات بدل، سلاسل، ميداليات ومحافظ بالاسم. كل قطعة بتتعمل مخصوص ليك، من المنصورة لأي مكان في مصر.</p>
+        <ul class="facts">
+          <li>✨ من ٢٠٢٠</li>
+          <li>🚚 توصيل لكل مصر</li>
+          <li>🤍 هاند ميد ١٠٠٪</li>
+        </ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="#order">ابدأ طلبك</a>
+          <a class="btn ghost" href="#work">شوف شغلنا</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.82787-15/872488202_18039063506836044_8525584207658378589_n.webp?_nc_cat=111&_nc_map=urlgen_bucketless&cb=30a688f7-ea5c0a5a&ig_cache_key=NDAyMTY3MDYyNDM2MDk5NjEzOQ%3D%3D.3-ccb7-5-cb30a688f7-ea5c0a5a&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkZFRUQueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=CEZqQOOQgJ0Q7kNvwGZknQU&_nc_oc=AdpL9mhdtKZPhAg5yIPXi9J4UzEfeqQn9qAnrt7OkCDGLSe6PvVH3lPJYuFHKpdR7To&_nc_zt=23&_nc_ht=instagram.faly1-2.fna&_nc_gid=ywZHcmZyF2GZ74nBPpudNQ&_nc_ss=7b6a8&oh=00_AQTKKiZlrOimaL2ZCfMiHVb_7id8mAiVy9oJXv5S7h_X2Q&oe=6AFD4C6E" alt="سلسلة بالاسم من شغل Nudella">
+        <div class="tag"><b>سلاسل بالاسم</b>مطلية دهب أو فضة</div>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="h-work">
+      <div class="sec-h"><h2 id="h-work">اختار قطعتك</h2><p>أي اسم أو جملة، بالعربي أو الإنجليزي.</p></div>
+      <div class="cats">
+        <article class="cat"><img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.75761-15/482663079_17967896321836044_4941192515925683881_n.webp?_nc_cat=100&_nc_map=urlgen_bucketless&cb=30a688f7-ea5c0a5a&ig_cache_key=MzU4MDg4ODAxOTM4NzQ3MTUyMA%3D%3D.3-ccb7-5-cb30a688f7-ea5c0a5a&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=HT25nEfiIBQQ7kNvwFQAOWN&_nc_oc=Ado9UR2oeg6EbX1YSdUd1Au-NwLiPVW8vMzCvEIlY7rATY0LFBC8B2DXUQP8HR1rC5E&_nc_zt=23&_nc_ht=instagram.faly1-2.fna&_nc_gid=ywZHcmZyF2GZ74nBPpudNQ&_nc_ss=7b6a8&oh=00_AQS7sVzOKbD11S0jfIShMHd-cQjq5elFF7xQ1coxErIqUg&oe=6AFD305C" alt="دبوس بدلة عريس بالاسم" loading="lazy"><div><h3>بروش بدلة العريس</h3><p>عشان يوم فرحك يبقى مميز</p></div></article>
+        <article class="cat"><img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.71878-15/885149160_1135095438997117_1185751119368339353_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=110&_nc_map=urlgen_bucketless&cb=30a688f7-ea5c0a5a&ig_cache_key=NDAyMDk0ODk1ODc0ODE2Nzg3OA%3D%3D.3-ccb7-5-cb30a688f7-ea5c0a5a&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=U_5lC2IBLKoQ7kNvwGwYkJV&_nc_oc=AdpNN7wTfqogBD5dBHYU4rPkJvr5nnApWeMXZuPV3ITlf8OR9bk67Ml4ivhIyA3OvlY&_nc_zt=23&_nc_ht=instagram.faly1-2.fna&_nc_gid=ywZHcmZyF2GZ74nBPpudNQ&_nc_ss=7b6a8&oh=00_AQSYrXi9Kdhlg8djHiLHLESUqDVi0g4UnnZc_3qHGn7ZWw&oe=6AFD3A49" alt="سلسلة باسم مطلية دهب" loading="lazy"><div><h3>سلاسل بالاسم</h3><p>باسمك أو اسم حد غالي عليك</p></div></article>
+        <article class="cat"><img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.82787-15/880004572_18038888342836044_3161719153469493566_n.webp?_nc_cat=100&_nc_map=urlgen_bucketless&cb=30a688f7-ea5c0a5a&ig_cache_key=NDAyMDc4NTcwMTU2MzUxODA1MA%3D%3D.3-ccb7-5-cb30a688f7-ea5c0a5a&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=kzq23j6xFLEQ7kNvwGHYinR&_nc_oc=AdqNAw6go_NM0RgFHLt6qecLsxhObpwHv2A8CtSMG-3p8VP64rwvs3hMh2nEzh271UY&_nc_zt=23&_nc_ht=instagram.faly1-2.fna&_nc_gid=ywZHcmZyF2GZ74nBPpudNQ&_nc_ss=7b6a8&oh=00_AQStY10RAwdVQ-0B_1YMGxp5ZdmC-rdEDlaFwicmx6fhog&oe=6AFD3FF0" alt="بروش تخرج باسم مطلي فضة" loading="lazy"><div><h3>بروش التخرج</h3><p>هدية تخرج بالاسم</p></div></article>
+        <article class="cat"><img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.71878-15/889059048_3444838305705363_6130337952854581505_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=111&_nc_map=urlgen_bucketless&cb=30a688f7-ea5c0a5a&ig_cache_key=NDAyODk1ODk2MTcxNTM1MzQ1Ng%3D%3D.3-ccb7-5-cb30a688f7-ea5c0a5a&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=FFjN0uUOaK4Q7kNvwH-5YZy&_nc_oc=AdqhuEb0rxROurf7bsbJN7i6j_6yfKSg4n1ZcEy-oEFWpze79BWpROaaXygbKENuPMs&_nc_zt=23&_nc_ht=instagram.faly1-2.fna&_nc_gid=ywZHcmZyF2GZ74nBPpudNQ&_nc_ss=7b6a8&oh=00_AQQL-R4a5VzrcjjhnhyoFSyZz8kAY8zliBQ68L0lBGm_rg&oe=6AFD5B3C" alt="بروش باسم مطلي فضة" loading="lazy"><div><h3>بروشات بالاسم</h3><p>مطلية فضة، بتصميمك</p></div></article>
+        <article class="cat"><img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.71878-15/888749121_2327221394710684_1131877617304544035_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=101&_nc_map=urlgen_bucketless&cb=30a688f7-ea5c0a5a&ig_cache_key=NDAyMzg2MTA5MjE0MjM5MjE0MA%3D%3D.3-ccb7-5-cb30a688f7-ea5c0a5a&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjY0MC5zZHIudmlkZW9fZmlyc3RfZnJhbWVfdGh1bWJuYWlsLkMzIn0%3D&_nc_ohc=YIU6Bzixt8QQ7kNvwFuj2et&_nc_oc=AdpaDodnr_9lpVXtv0lPqwv8IEmvxI_wCVpTsafwvRCq6dxa8g72V4Q4wzIcHWNKJCA&_nc_zt=23&_nc_ht=instagram.faly1-2.fna&_nc_gid=ywZHcmZyF2GZ74nBPpudNQ&_nc_ss=7b6a8&oh=00_AQSBC_7He2_jlP8Ul3RKT2FbdPtjvTcFBLm6kuC49wOu3A&oe=6AFD3FC1" alt="ميدالية مفاتيح بالاسم" loading="lazy"><div><h3>ميداليات ودلايات</h3><p>اسم أو جملة تحبها</p></div></article>
+        <article class="cat"><img src="https://instagram.faly1-2.fna.fbcdn.net/v/t51.71878-15/504528693_699387952984722_1208309031605389084_n.jpg?stp=dst-jpg_e15_tt6&_nc_cat=103&_nc_map=urlgen_bucketless&cb=30a688f7-ea5c0a5a&ig_cache_key=MzIyMzU1ODg2MTUxMjk4NzQ2Nw%3D%3D.3-ccb7-5-cb30a688f7-ea5c0a5a&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNMSVBTLnhwaWRzLjMyMC5zZHIudmlkZW9fZGVmYXVsdF9jb3Zlcl9mcmFtZS5DMyJ9&_nc_ohc=Swt3Fellt9UQ7kNvwE-Tzql&_nc_oc=Ado6nHTw6G_M956ntmXeW0-Qorf0pHAHwwgw_aHVd6WJ1IrO-Gl2kZVZmU25zxLDl7k&_nc_zt=23&_nc_ht=instagram.faly1-2.fna&_nc_gid=ywZHcmZyF2GZ74nBPpudNQ&_nc_ss=7b6a8&oh=00_AQRRhKxoR1nsB2damWDury2kDhXBQIWt5GX4Qe0-kn6uLQ&oe=6AFD629C" alt="محفظة باسم" loading="lazy"><div><h3>محافظ بالاسم</h3><p>ليه محفظة عادية؟</p></div></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-how">
+      <div class="sec-h"><h2 id="h-how">الطلب في ٣ خطوات</h2></div>
+      <div class="steps">
+        <div class="step"><h3>اختار القطعة</h3><p>بروش، سلسلة، ميدالية أو محفظة، والطلاء اللي يعجبك.</p></div>
+        <div class="step"><h3>اكتب الاسم</h3><p>وشوفه قدامك على القطعة قبل ما تطلب.</p></div>
+        <div class="step"><h3>ابعت الطلب</h3><p>بيوصلنا في رسالة واحدة، ونرد عليك بالسعر ومعاد التوصيل.</p></div>
+      </div>
+    </section>
+
+    <section id="order" aria-labelledby="h-order">
+      <div class="sec-h"><h2 id="h-order">ابدأ طلبك</h2><p>مش هياخد أكتر من دقيقة.</p></div>
+      <div class="order">
+        <form id="f" novalidate>
+          <fieldset>
+            <legend>عايز إيه؟</legend>
+            <div class="picks">
+              <label class="pick"><input type="radio" name="item" id="p1" value="بروش بدلة" checked><span>بروش بدلة</span></label>
+              <label class="pick"><input type="radio" name="item" id="p2" value="سلسلة بالاسم"><span>سلسلة</span></label>
+              <label class="pick"><input type="radio" name="item" id="p3" value="بروش تخرج"><span>بروش تخرج</span></label>
+              <label class="pick"><input type="radio" name="item" id="p4" value="ميدالية"><span>ميدالية</span></label>
+              <label class="pick"><input type="radio" name="item" id="p5" value="محفظة بالاسم"><span>محفظة</span></label>
+              <label class="pick"><input type="radio" name="item" id="p6" value="حاجة تانية"><span>حاجة تانية</span></label>
+            </div>
+          </fieldset>
+          <div>
+            <label for="eng">الاسم أو الجملة</label>
+            <input type="text" id="eng" maxlength="24" placeholder="مثلاً: بسمة" value="بسمة">
+          </div>
+          <fieldset>
+            <legend>الطلاء</legend>
+            <div class="plating">
+              <label class="pick"><input type="radio" name="plate" id="pl1" value="فضة" checked><span><i class="dot s"></i>فضة</span></label>
+              <label class="pick"><input type="radio" name="plate" id="pl2" value="دهب"><span><i class="dot g"></i>دهب</span></label>
+            </div>
+          </fieldset>
+          <div class="row2">
+            <div><label for="name">اسمك</label><input type="text" id="name" autocomplete="name"></div>
+            <div><label for="gov">المحافظة</label><select id="gov"><option>المنصورة / الدقهلية</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>محافظة تانية</option></select></div>
+          </div>
+          <div><label for="when">محتاجها إمتى؟ <span style="font-weight:400;color:var(--soft)">(اختياري)</span></label><input type="date" id="when"></div>
+          <div class="err" id="err" role="alert"></div>
+          <button class="btn" type="submit" style="align-self:flex-start">ابعت الطلب</button>
+          <div class="done" id="done">في النسخة الحقيقية، الزرار ده هيفتح واتساب أو الدايركت مع Nudella والرسالة جاهزة.</div>
+        </form>
+        <div class="side">
+          <div class="engrave" aria-live="polite">
+            <small>شكل الاسم على القطعة</small>
+            <span class="plate" id="plate">بسمة</span>
+          </div>
+          <aside class="preview" aria-labelledby="h-prev">
+            <h3 id="h-prev">الرسالة اللي هتوصل لـ Nudella</h3>
+            <div class="bubble" id="bubble"></div>
+            <p class="note">كل التفاصيل في رسالة واحدة، من غير أسئلة رايحة جاية.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Nudella · إكسسوارات هاند ميد من ٢٠٢٠ · المنصورة</span>
+    <span>تصور من Sanad Strategies · sanad-strategies.com</span>
+  </footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+function val(name){ return document.querySelector(`input[name=${name}]:checked`).value; }
+function build(){
+  const lines = ['أهلاً Nudella 🤍 عايز أطلب:', `💎 ${val('item')} (${val('plate')})`, `✍️ الاسم: ${$('eng').value.trim() || '—'}`, `📍 ${$('gov').value}`];
+  if($('when').value) lines.push(`📅 محتاجها يوم ${new Date($('when').value+'T12:00').toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long'})}`);
+  lines.push(`— ${$('name').value.trim() || 'اسمك'}`);
+  return lines.join('\n');
+}
+function refresh(){
+  $('plate').textContent = $('eng').value.trim() || 'اسمك';
+  $('plate').classList.toggle('gold', val('plate') === 'دهب');
+  $('bubble').textContent = build();
+}
+$('f').addEventListener('input', refresh);
+$('f').addEventListener('change', refresh);
+$('f').addEventListener('submit', e=>{
+  e.preventDefault();
+  const err=$('err'); err.textContent='';
+  if(!$('eng').value.trim()){ err.textContent='اكتب الاسم أو الجملة اللي عايزها على القطعة.'; $('eng').focus(); return; }
+  if(!$('name').value.trim()){ err.textContent='اكتب اسمك عشان نعرف الطلب لمين.'; $('name').focus(); return; }
+  refresh(); $('done').classList.add('show');
+});
+const t=new Date(); t.setDate(t.getDate()+1); $('when').min=t.toISOString().slice(0,10);
+refresh();
+</script>
+</body>
+</html>
